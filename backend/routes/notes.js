@@ -65,6 +65,7 @@ router.post(
     }
   }
 );
+
 // Route 3: Update an existing note using : PUT "/api/notes/updatenote/:id". Login required
 router.put("/updatenote/:id", fetchuser, async (req, res) => {
   const { title, description, tag } = req.body;
@@ -102,8 +103,11 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+
 // Route 4: Delete an existing note using : DELETE "/api/notes/deletenote/:id". Login required
-// Route 4: Delete an existing note using : DELETE "/api/notes/deletenote/:id". Login required
+
+
 router.delete("/deletenote/:id", fetchuser, async (req, res) => {
   try {
     // Find the note to be deleted
