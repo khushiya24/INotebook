@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+const response = await fetch("https://inotebook-backend-v6gc.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,11 +17,12 @@ const Login = (props) => {
         password: credentials.password,
       }),
     });
+
     const json = await response.json();
     console.log(json);
 
     if (json.success) {
-      alert("You logged in successfully"); 
+      alert("You logged in successfully");
       localStorage.setItem("token", json.authtoken);
       navigate("/");
     } else {

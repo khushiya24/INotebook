@@ -14,26 +14,34 @@ import Signup from './components/Signup';
 import { useState } from 'react';
 
 function App() {
+  // ✅ Alert system setup
   const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type });
+    setTimeout(() => {
+      setAlert(null);
+    }, 2000);
+  };
+
   return (
-    <>
     <NoteState>
-    <Router>
-      <Navbar/>
-      <Alert message="This is react"/>
-      <div className="container">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-      </div>
-    </Router>
+      <Router>
+        <Navbar />
+        {/* ✅ Pass alert object instead of hardcoded message */}
+        <Alert alert={alert} />
+
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home showAlert={showAlert} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login showAlert={showAlert} />} />
+            <Route path="/signup" element={<Signup showAlert={showAlert} />} />
+          </Routes>
+        </div>
+      </Router>
     </NoteState>
-    </>
   );
 }
 
 export default App;
-

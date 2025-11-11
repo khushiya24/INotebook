@@ -130,7 +130,8 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/createUser", {
+      // ⚙️ CHANGED: use your Render backend URL here
+const response = await fetch("https://inotebook-backend-v6gc.onrender.com/api/auth/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,9 +164,7 @@ const Signup = () => {
       <h2>Create an account to use iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
+          <label htmlFor="name" className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
@@ -178,9 +177,7 @@ const Signup = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
+          <label htmlFor="email" className="form-label">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -196,9 +193,7 @@ const Signup = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
+          <label htmlFor="password" className="form-label">Password</label>
           <input
             type="password"
             className="form-control"
@@ -212,9 +207,7 @@ const Signup = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
+          <label htmlFor="cpassword" className="form-label">Confirm Password</label>
           <input
             type="password"
             className="form-control"
@@ -227,12 +220,11 @@ const Signup = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
 };
 
 export default Signup;
+
